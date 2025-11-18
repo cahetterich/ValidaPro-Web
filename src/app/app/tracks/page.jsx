@@ -1,0 +1,1 @@
+export default function Page(){return(<div><h3>Trilhas</h3></div>)}

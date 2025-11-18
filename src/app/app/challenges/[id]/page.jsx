@@ -1,0 +1,1 @@
+export default function Page({params}){return(<div><h3>Desafio: {params.id}</h3></div>)}

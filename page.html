@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ValidaPro — Landing Mock v3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      :root {
+        --color-primary: #1e6f9f;
+        --color-primary-soft: #e3f1f8;
+        --color-primary-strong: #114b69;
+
+        --color-success: #00a896;
+        --color-success-soft: #e0f6f2;
+
+        --color-warning: #ffb703;
+        --color-warning-soft: #fff4d7;
+
+        --color-text: #222222;
+        --color-text-soft: rgba(34, 34, 34, 0.7);
+        --color-text-subtle: rgba(34, 34, 34, 0.55);
+
+        --gray-50: #f9fafb;
+        --gray-100: #f3f4f6;
+        --gray-200: #e5e7eb;
+
+        --border-subtle: rgba(15, 23, 42, 0.06);
+
+        --radius-md: 12px;
+        --radius-lg: 16px;
+        --radius-xl: 20px;
+        --radius-pill: 999px;
+
+        --shadow-soft: 0 1px 2px rgba(15, 23, 42, 0.06);
+        --shadow-md: 0 16px 45px rgba(15, 23, 42, 0.16);
+
+        --space-xl: 32px;
+        --layout-max-width: 1120px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        min-height: 100vh;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", sans-serif;
+        background: radial-gradient(
+          circle at top left,
+          #fdfefe 0,
+          #f5f7fb 40%,
+          #edf0f5 100%
+        );
+        color: var(--color-text);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+        text-underline-offset: 2px;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+      }
+
+      /* Shell */
+
+      .shell-nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(14px);
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.96),
+          rgba(255, 255, 255, 0.9)
+        );
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .shell-nav-inner,
+      .shell-main,
+      .shell-footer-inner {
+        max-width: var(--layout-max-width);
+        margin: 0 auto;
+        padding: 12px 16px;
+      }
+
+      .shell-main {
+        padding-top: 28px;
+        padding-bottom: 48px;
+      }
+
+      /* Header */
+
+      .nav-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        justify-content: space-between;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .brand-mark {
+        width: 32px;
+        height: 32px;
+        border-radius: 12px;
+        background: var(--color-primary);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .brand-mark svg {
+        display: block;
+      }
+
+      .brand-wordmark {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .brand-name {
+        font-size: 0.98rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .brand-tagline {
+        font-size: 0.72rem;
+        color: var(--color-text-subtle);
+      }
+
+      .nav-main {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.85rem;
+      }
+
+      .nav-link {
+        padding: 6px 10px;
+        border-radius: var(--radius-pill);
+        color: var(--color-text-subtle);
+      }
+
+      .nav-link--active {
+        background: rgba(30, 111, 159, 0.08);
+        color: var(--color-primary);
+      }
+
+      .nav-link:hover {
+        background: rgba(15, 23, 42, 0.04);
+        color: var(--color-text);
+        text-decoration: none;
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      /* Botões */
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 16px;
+        border-radius: var(--radius-pill);
+        border: 1px solid transparent;
+        font-size: 0.88rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        background: var(--color-primary);
+        color: #ffffff;
+        box-shadow: var(--shadow-soft);
+        transition:
+          background 140ms ease-out,
+          box-shadow 140ms ease-out,
+          transform 140ms ease-out;
+      }
+
+      .btn-lg {
+        padding: 10px 20px;
+      }
+
+      .btn:hover {
+        background: var(--color-primary-strong);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-1px);
+      }
+
+      .btn-secondary {
+        background: #ffffff;
+        color: var(--color-primary);
+        border-color: var(--border-subtle);
+        box-shadow: none;
+      }
+
+      .btn-secondary:hover {
+        background: var(--color-primary-soft);
+      }
+
+      .btn-ghost {
+        background: transparent;
+        border-color: transparent;
+        box-shadow: none;
+        color: var(--color-text-subtle);
+      }
+
+      .btn-ghost:hover {
+        background: rgba(15, 23, 42, 0.04);
+        color: var(--color-text);
+      }
+
+      /* Layout página */
+
+      .page-grid {
+        display: grid;
+        gap: var(--space-xl);
+      }
+
+      .section {
+        background: #ffffff;
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--border-subtle);
+        box-shadow: var(--shadow-soft);
+        padding: 28px 24px;
+      }
+
+      .section-muted {
+        background: #f9fafb;
+      }
+
+      .section-header {
+        margin-bottom: 14px;
+      }
+
+      .section-kicker {
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--color-text-subtle);
+        margin: 0 0 4px;
+      }
+
+      .section-title {
+        font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+        margin: 0 0 4px;
+      }
+
+      .section-subtitle {
+        font-size: 0.9rem;
+        color: var(--color-text-soft);
+        max-width: 40rem;
+        margin: 0;
+      }
+
+      /* Hero */
+
+      .hero {
+        padding: 32px 28px;
+        box-shadow: var(--shadow-md);
+        background: radial-gradient(
+            circle at top left,
+            rgba(30, 111, 159, 0.08),
+            transparent 55%
+          ),
+          #ffffff;
+      }
+
+      .hero-layout {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+        align-items: center;
+      }
+
+      .hero-title {
+        font-size: clamp(2rem, 3vw, 2.6rem);
+        line-height: 1.15;
+        margin: 0 0 8px;
+      }
+
+      .hero-subtitle {
+        font-size: 0.95rem;
+        color: var(--color-text-soft);
+        max-width: 40rem;
+        margin: 0;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .hero-footnote {
+        font-size: 0.78rem;
+        color: var(--color-text-subtle);
+        margin-top: 6px;
+      }
+
+      .hero-right {
+        display: flex;
+        justify-content: center;
+      }
+
+      .hero-preview {
+        width: 100%;
+        max-width: 360px;
+        border-radius: 24px;
+        padding: 16px 16px 18px;
+        background: linear-gradient(145deg, #0f172a, #1e293b);
+        color: #e5e7eb;
+        box-shadow: 0 18px 45px rgba(15, 23, 42, 0.7);
+      }
+
+      .hero-preview-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+
+      .hero-preview-title {
+        font-size: 0.82rem;
+        font-weight: 500;
+      }
+
+      .hero-preview-chip {
+        font-size: 0.7rem;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(148, 163, 184, 0.7);
+      }
+
+      .hero-preview-body {
+        display: grid;
+        gap: 8px;
+      }
+
+      .hero-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 10px;
+        background: rgba(15, 23, 42, 0.86);
+      }
+
+      .hero-row-main {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .hero-row-title {
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .hero-row-meta {
+        font-size: 0.7rem;
+        color: #9ca3af;
+      }
+
+      .hero-row-badge {
+        font-size: 0.72rem;
+        padding: 3px 8px;
+        border-radius: 999px;
+        background: rgba(22, 163, 74, 0.15);
+        color: #bbf7d0;
+        border: 1px solid rgba(22, 163, 74, 0.6);
+      }
+
+      .hero-row-badge-pill {
+        background: rgba(59, 130, 246, 0.18);
+        color: #bfdbfe;
+        border-color: rgba(59, 130, 246, 0.7);
+      }
+
+      /* Grids / cards */
+
+      .grid-3 {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .grid-2 {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      }
+
+      .stack-md {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .feature-card {
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border-subtle);
+        background: #ffffff;
+        padding: 14px 16px;
+      }
+
+      .feature-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin: 0 0 4px;
+      }
+
+      .feature-text {
+        font-size: 0.9rem;
+        color: var(--color-text-soft);
+        margin: 0;
+      }
+
+      .card-soft {
+        background: #fbfbfb;
+      }
+
+      .card-header {
+        margin-bottom: 6px;
+      }
+
+      .card-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .card-subtitle {
+        font-size: 0.8rem;
+        color: var(--color-text-subtle);
+        margin: 2px 0 0;
+      }
+
+      /* Split section layout (por que existe) */
+
+      .section-split-layout {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+        align-items: flex-start;
+      }
+
+      .section-split-left {
+        border-right: 1px solid var(--gray-200);
+        padding-right: 20px;
+      }
+
+      @media (max-width: 900px) {
+        .section-split-layout {
+          grid-template-columns: 1fr;
+        }
+        .section-split-left {
+          border-right: none;
+          border-bottom: 1px solid var(--gray-200);
+          padding-right: 0;
+          padding-bottom: 14px;
+          margin-bottom: 4px;
+        }
+      }
+
+      .section-list {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: var(--color-text-soft);
+      }
+
+      .section-list li {
+        margin-bottom: 4px;
+      }
+
+      /* Timeline */
+
+      .timeline {
+        list-style: none;
+        margin: 10px 0 0;
+        padding: 0 0 0 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        position: relative;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 4px;
+        bottom: 4px;
+        width: 2px;
+        background: linear-gradient(
+          to bottom,
+          rgba(30, 111, 159, 0.4),
+          rgba(30, 111, 159, 0.1)
+        );
+      }
+
+      .timeline-item {
+        display: flex;
+        gap: 8px;
+        font-size: 0.9rem;
+        position: relative;
+      }
+
+      .timeline-badge {
+        width: 22px;
+        height: 22px;
+        border-radius: var(--radius-pill);
+        background: var(--color-primary);
+        color: #ffffff;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2px;
+        z-index: 1;
+      }
+
+      .timeline-content strong {
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      .timeline-content span {
+        color: var(--color-text-soft);
+      }
+
+      /* Feedback surfaces */
+
+      .success-surface {
+        background: var(--color-success-soft);
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(0, 168, 150, 0.4);
+        padding: 10px 12px;
+        font-size: 0.9rem;
+        color: #0b5f55;
+      }
+
+      .success-note {
+        margin: 4px 0 0;
+        font-size: 0.8rem;
+      }
+
+      .warning-surface {
+        background: var(--color-warning-soft);
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(255, 183, 3, 0.4);
+        padding: 10px 12px;
+        font-size: 0.9rem;
+        color: #7a5200;
+      }
+
+      /* Footer */
+
+      .shell-footer {
+        border-top: 1px solid var(--border-subtle);
+        background: #ffffff;
+      }
+
+      .shell-footer-inner {
+        padding-top: 20px;
+        padding-bottom: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 0.8rem;
+        color: var(--color-text-subtle);
+      }
+
+      .footer-top {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .footer-right {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .footer-link {
+        color: var(--color-text-subtle);
+      }
+
+      .footer-link:hover {
+        color: var(--color-primary);
+        text-decoration: underline;
+      }
+
+      /* Responsivo */
+
+      @media (max-width: 900px) {
+        .hero-layout {
+          grid-template-columns: 1fr;
+        }
+        .hero-right {
+          justify-content: flex-start;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-row {
+          flex-wrap: wrap;
+          align-items: flex-start;
+          row-gap: 8px;
+        }
+
+        .nav-main {
+          flex-basis: 100%;
+          justify-content: flex-start;
+        }
+
+        .hero {
+          padding: 24px 18px;
+        }
+
+        .section {
+          padding: 22px 18px;
+        }
+
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER / NAVBAR -->
+    <header class="shell-nav">
+      <div class="shell-nav-inner">
+        <div class="nav-row">
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect
+                  x="2.5"
+                  y="4"
+                  width="15"
+                  height="12"
+                  rx="2.5"
+                  fill="#ffffff"
+                  opacity="0.96"
+                />
+                <path
+                  d="M8.2 10.8L10.1 12.6L14.1 8.5"
+                  fill="none"
+                  stroke="#00A896"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            <div class="brand-wordmark">
+              <span class="brand-name">ValidaPro</span>
+              <span class="brand-tagline">Validação que abre portas</span>
+            </div>
+          </div>
+
+          <nav class="nav-main" aria-label="Navegação principal">
+            <a href="#" class="nav-link nav-link--active">Visão geral</a>
+            <a href="#como-funciona" class="nav-link">Como funciona</a>
+            <a href="#para-empresas" class="nav-link">Para empresas</a>
+          </nav>
+
+          <div class="nav-actions">
+            <a href="#" class="btn btn-ghost">Entrar</a>
+            <a href="#" class="btn btn-sm">Começar piloto</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTEÚDO -->
+    <main class="shell-main" id="conteudo" role="main">
+      <div class="page-grid">
+        <!-- HERO -->
+        <section class="section hero" aria-labelledby="hero-title">
+          <div class="hero-layout">
+            <div>
+              <div class="section-header">
+                <p class="section-kicker">
+                  Plataforma para recolocação · Futuro do trabalho
+                </p>
+                <h1 class="hero-title" id="hero-title">
+                  ValidaPro: desafios práticos que viram evidência de skill.
+                </h1>
+                <p class="hero-subtitle">
+                  Para profissionais em recolocação que precisam provar
+                  competência rápido. Você resolve desafios reais, mentores
+                  avaliam e empresas enxergam entregas — não apenas um
+                  currículo.
+                </p>
+              </div>
+
+              <div class="hero-actions" aria-label="Ações principais">
+                <a href="#" class="btn btn-lg">Começar como candidato</a>
+                <a href="#" class="btn btn-secondary btn-lg"
+                  >Sou empresa / mentor</a
+                >
+              </div>
+
+              <p class="hero-footnote">
+                Sem curadoria infinita de vagas: trilhas curtas, desafios
+                objetivos e feedback estruturado.
+              </p>
+            </div>
+
+            <div class="hero-right">
+              <div
+                class="hero-preview"
+                role="img"
+                aria-label="Exemplo de painel ValidaPro com trilhas e avaliações"
+              >
+                <div class="hero-preview-header">
+                  <span class="hero-preview-title">Trilhas ativas</span>
+                  <span class="hero-preview-chip">Modo mentor</span>
+                </div>
+                <div class="hero-preview-body">
+                  <div class="hero-row">
+                    <div class="hero-row-main">
+                      <span class="hero-row-title">
+                        Front-end acessível
+                      </span>
+                      <span class="hero-row-meta">
+                        8 desafios · 3 submissões pendentes
+                      </span>
+                    </div>
+                    <span class="hero-row-badge">score médio 84</span>
+                  </div>
+                  <div class="hero-row">
+                    <div class="hero-row-main">
+                      <span class="hero-row-title">API Node + testes</span>
+                      <span class="hero-row-meta">
+                        5 desafios · 2 revisados hoje
+                      </span>
+                    </div>
+                    <span class="hero-row-badge hero-row-badge-pill"
+                      >revisão em curso</span
+                    >
+                  </div>
+                  <div class="hero-row">
+                    <div class="hero-row-main">
+                      <span class="hero-row-title">
+                        UX para produtos digitais
+                      </span>
+                      <span class="hero-row-meta">
+                        6 desafios · 1 candidato destaque
+                      </span>
+                    </div>
+                    <span class="hero-row-badge">em piloto</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- POR QUE EXISTE -->
+        <section class="section" id="porque-existe">
+          <div class="section-split-layout">
+            <div class="section-split-left">
+              <div class="section-header">
+                <h2 class="section-title">Por que o ValidaPro existe?</h2>
+                <p class="section-subtitle">
+                  Ajudamos pessoas em recolocação a sair da fila de currículos
+                  e entrar em uma fila de desafios práticos, com critérios
+                  claros e avaliação guiada.
+                </p>
+              </div>
+              <ul class="section-list">
+                <li>Foco em evidência prática, não só histórico profissional.</li>
+                <li>Critérios de avaliação transparentes e reaplicáveis.</li>
+                <li>
+                  Experiência pensada tanto para quem busca recolocação quanto
+                  para quem seleciona talentos.
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="grid-3">
+                <article class="feature-card">
+                  <h3 class="feature-title">Para candidatos</h3>
+                  <p class="feature-text">
+                    Trilhas curtas, desafios focados e espaço para explicar
+                    decisões em texto, vídeo ou áudio. Ideal para quem está
+                    mudando de área ou voltando ao mercado.
+                  </p>
+                </article>
+                <article class="feature-card">
+                  <h3 class="feature-title">Para empresas</h3>
+                  <p class="feature-text">
+                    Painel com submissões, scores e histórico de desafios. Menos
+                    entrevista genérica, mais análise de entregas reais e
+                    consistentes.
+                  </p>
+                </article>
+                <article class="feature-card">
+                  <h3 class="feature-title">Para mentores</h3>
+                  <p class="feature-text">
+                    Fluxo simples para avaliar, pontuar e registrar feedback que
+                    realmente ajuda a pessoa candidata a evoluir de um desafio
+                    para o outro.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- COMO FUNCIONA -->
+        <section class="section section-muted" id="como-funciona">
+          <div class="grid-2">
+            <div class="stack-md">
+              <div class="section-header">
+                <h2 class="section-title">Como funciona na prática</h2>
+                <p class="section-subtitle">
+                  A pessoa candidata usa o app para resolver desafios. Mentores
+                  e empresas avaliam pela plataforma web. Tudo conectado pela
+                  mesma API.
+                </p>
+              </div>
+
+              <ul class="timeline">
+                <li class="timeline-item">
+                  <div class="timeline-badge">1</div>
+                  <div class="timeline-content">
+                    <strong>Escolha uma trilha</strong>
+                    <span
+                      >Ex.: Front-end acessível, API Node, UX para produtos
+                      digitais.</span
+                    >
+                  </div>
+                </li>
+                <li class="timeline-item">
+                  <div class="timeline-badge">2</div>
+                  <div class="timeline-content">
+                    <strong>Resolva micro-desafios</strong>
+                    <span
+                      >Entregue código, justificativa em texto e, se quiser,
+                      vídeo/áudio explicando sua solução.</span
+                    >
+                  </div>
+                </li>
+                <li class="timeline-item">
+                  <div class="timeline-badge">3</div>
+                  <div class="timeline-content">
+                    <strong>Receba score e feedback</strong>
+                    <span
+                      >O painel web exibe submissões, mentores avaliam e o app
+                      mostra sua evolução ao longo da jornada.</span
+                    >
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="stack-md">
+              <div class="success-surface">
+                <strong>Experiência consistente em app e web</strong>
+                <p class="success-note">
+                  A mesma identidade visual, os mesmos textos e a mesma
+                  estrutura de trilhas e desafios aparecem no app (React
+                  Native/Expo) e na plataforma web (Next.js). A pessoa usuária
+                  sente que está em um único produto, independente do
+                  dispositivo.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PARA EMPRESAS -->
+        <section class="section" id="para-empresas">
+          <div class="section-header">
+            <h2 class="section-title">Para empresas e mentores</h2>
+            <p class="section-subtitle">
+              Um painel simples para avaliar desafios, comparar entregas e
+              identificar quem está pronto para a próxima etapa — sem perder
+              tempo em entrevistas genéricas.
+            </p>
+          </div>
+
+          <div class="grid-2">
+            <div class="stack-md">
+              <div class="feature-card card-soft">
+                <div class="card-header">
+                  <p class="card-title">Painel de avaliações</p>
+                  <p class="card-subtitle">
+                    Submissões organizadas por trilha, desafio e status.
+                  </p>
+                </div>
+                <p class="feature-text">
+                  Veja rapidamente quem entregou, quais desafios ainda estão
+                  pendentes e qual foi o score de cada pessoa candidata ao
+                  longo da jornada.
+                </p>
+              </div>
+
+              <div class="feature-card card-soft">
+                <div class="card-header">
+                  <p class="card-title">Feedback acionável</p>
+                  <p class="card-subtitle">
+                    Estrutura pensada para comentários claros e objetivos.
+                  </p>
+                </div>
+                <p class="feature-text">
+                  Em vez de um “não foi dessa vez”, a plataforma incentiva
+                  feedbacks que deixam claro o que foi bom, o que precisa
+                  melhorar e qual o próximo passo.
+                </p>
+              </div>
+            </div>
+
+            <div class="stack-md">
+              <div class="warning-surface">
+                <strong>Modo piloto para empresas</strong>
+                <p class="success-note">
+                  Na primeira versão, o ValidaPro pode ser usado por um pequeno
+                  grupo de mentores e recrutadores para validar o modelo com
+                  uma turma de candidatos em recolocação.
+                </p>
+              </div>
+
+              <p class="feature-text">
+                A integração com o app mobile garante que a pessoa candidata
+                acompanhe em tempo quase real o resultado de cada desafio,
+                fortalecendo a percepção de transparência do processo e a
+                confiança na empresa.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="shell-footer" aria-label="Rodapé do ValidaPro">
+      <div class="shell-footer-inner">
+        <div class="footer-top">
+          <strong>ValidaPro</strong>
+          <span>• Plataforma de desafios práticos para recolocação.</span>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2025 ValidaPro. Projeto acadêmico FIAP.</span>
+          <div class="footer-right">
+            <a href="#" class="footer-link">Acessibilidade</a>
+            <a href="#" class="footer-link">Documentação técnica</a>
+            <a href="#" class="footer-link">Contato</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+

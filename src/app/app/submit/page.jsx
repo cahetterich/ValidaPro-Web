@@ -1,0 +1,1 @@
+export default function Page(){return(<div><h3>Enviar</h3></div>)}
