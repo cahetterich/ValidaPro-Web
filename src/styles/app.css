@@ -568,3 +568,112 @@
     flex-direction: row-reverse;
   }
 }
+
+/* ===== Vagas / Oportunidades ===== */
+
+.job-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.job-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.job-title {
+  margin: 0 0 2px;
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.job-company {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--color-text-subtle);
+}
+
+.job-meta {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  color: var(--color-text-subtle);
+}
+
+.job-match {
+  text-align: right;
+  min-width: 80px;
+}
+
+.job-match-value {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.job-match-label {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--color-text-subtle);
+}
+
+.job-description {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
+}
+
+.job-footer {
+  margin-top: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.job-footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.job-posted {
+  font-size: 0.78rem;
+  color: var(--color-text-subtle);
+}
+
+.job-based-on {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  color: var(--color-text-subtle);
+}
+
+/* responsivo */
+@media (max-width: 640px) {
+  .job-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .job-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .job-footer-right {
+    align-items: flex-start;
+  }
+
+  .job-match {
+    text-align: left;
+  }
+}

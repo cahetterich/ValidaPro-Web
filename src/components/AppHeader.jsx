@@ -8,6 +8,7 @@ import { usePathname, useRouter } from "next/navigation";
 const navLinks = [
   { href: "/app", label: "Minha jornada" },
   { href: "/app/trilhas", label: "Trilhas" },
+  { href: "/app/vagas", label: "Vagas" },  
   { href: "/app/mensagens", label: "Mensagens" },
   { href: "/app/alertas", label: "Alertas" },
   { href: "/app/configuracoes", label: "Configurações" },
@@ -102,7 +103,7 @@ export default function AppHeader() {
             <div className="nav-actions">
               <span className="badge badge-success">
                 <span className="badge-dot" aria-hidden="true" />
-                Demo ativa
+                {/* Demo ativa */}
               </span>
               <button
                 type="button"
@@ -151,7 +152,7 @@ export default function AppHeader() {
           <div className="nav-mobile-actions">
             <span className="badge badge-success">
               <span className="badge-dot" aria-hidden="true" />
-              Demo ativa
+              {/* Demo ativa */}
             </span>
 
             <button

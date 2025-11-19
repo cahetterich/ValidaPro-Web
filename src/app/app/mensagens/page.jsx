@@ -1,8 +1,16 @@
 // src/app/app/mensagens/page.jsx
 import Link from "next/link";
-import { mockMessages } from "../../../lib/mockMessages";
+import { getAllMessages } from "../../../lib/apiMessages";
 
-export default function MensagensPage() {
+export default async function MensagensPage() {
+  let messages = [];
+
+  try {
+    messages = await getAllMessages(); // agora vira um ARRAY
+  } catch (error) {
+    console.error("Erro ao carregar mensagens", error);
+  }
+
   return (
     <main className="shell-main page-grid">
       {/* HEADER */}
@@ -13,7 +21,8 @@ export default function MensagensPage() {
             Conversas com mentores e sistema
           </h1>
           <p className="section-subtitle">
-            Acompanhe feedbacks, avisos e orientações trocadas com mentores e empresas ao longo da sua jornada.
+            Acompanhe feedbacks, avisos e orientações trocadas com mentores e
+            empresas ao longo da sua jornada.
           </p>
         </div>
       </section>
@@ -21,12 +30,17 @@ export default function MensagensPage() {
       {/* LISTA DE MENSAGENS */}
       <section className="section">
         <div className="stack-md">
-          {mockMessages.map((msg) => (
+          {messages.length === 0 && (
+            <p className="section-subtitle">
+              Você ainda não tem mensagens por aqui.
+            </p>
+          )}
+
+          {messages.map((msg) => (
             <div
               key={msg.id}
               className={
-                "card message-item " +
-                (msg.isUnread ? "message-unread" : "")
+                "card message-item " + (msg.isUnread ? "message-unread" : "")
               }
             >
               {/* Esquerda: avatar + conteúdo */}
@@ -80,3 +94,5 @@ export default function MensagensPage() {
     </main>
   );
 }
+
+
