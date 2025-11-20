@@ -29,12 +29,17 @@
 
 // src/lib/apiMessages.js
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || ""; 
-// em produção web, pode ficar vazio -> vira "/api/..." 
+const BASE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (typeof window === "undefined"
+    ? "http://localhost:3000"
+    : window.location.origin);
 
-// Busca TODAS as mensagens
+// -------------------------------
+// Buscar TODAS as mensagens
+// -------------------------------
 export async function getAllMessages() {
-  const res = await fetch(`${API_BASE}/api/messages`, {
+  const res = await fetch(`${BASE_URL}/api/messages`, {
     cache: "no-store",
   });
 
@@ -46,9 +51,11 @@ export async function getAllMessages() {
   return data.items ?? [];
 }
 
-// Busca uma mensagem específica pelo id
+// -------------------------------
+// Buscar mensagem por ID
+// -------------------------------
 export async function getMessageById(id) {
-  const res = await fetch(`${API_BASE}/api/messages/${id}`, {
+  const res = await fetch(`${BASE_URL}/api/messages/${id}`, {
     cache: "no-store",
   });
 
@@ -58,3 +65,4 @@ export async function getMessageById(id) {
 
   return res.json();
 }
+
